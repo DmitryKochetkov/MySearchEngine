@@ -13,3 +13,12 @@ a {
 a:hover {
 	text-decoration: underline;
 }
+
+.interface {
+	text-align: center;
+}
+
+#response>li {
+	margin-left: 100pt;
+	margin-bottom: 15pt;
+}

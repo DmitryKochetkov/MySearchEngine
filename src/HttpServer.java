@@ -102,7 +102,7 @@ public class HttpServer implements Runnable {
 
         if (request == null) {
             response400();
-            return false;
+            //return true;
         }
         else {
             Pattern pattern = Pattern.compile("(.*) \\/(.*) HTTP\\/1\\.1");
@@ -122,6 +122,7 @@ public class HttpServer implements Runnable {
             System.out.println("Connection closed.\n");
             return true;
         }
+        return true;
     }
 }
 
