@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        function search() {
+            var input = document.getElementById('request').value;
+            var div = document.getElementById('response');
+            var li = document.createElement('li');
+            var a = document.createElement('a');
+            a.innerHTML += input;
+            a.href = '#';
+            li.appendChild(a);
+            div.appendChild(li);
+        }
+    </script>
+</head>
+<body>
+    <h1 id="logo">Search Engine Emulator</h1>
+    <p>Эта страница эмулирует поисковую систему для задания №18 ЕГЭ, выполняемого на кругах Эйлера.</p>
+    <p>Поисковый запрос: </p>
+    <div>
+        <input type="text" size="150" id="request">
+        <input type="submit" value="Найти" id="button" onclick="search()">
+    </div>
+    <br>
+    <ul id="response"></ul>
+</body>
+</html>

@@ -1,0 +1,15 @@
+body {
+	font-family: "Arial";
+}
+
+h1 {
+	color: #3A3;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
