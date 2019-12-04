@@ -109,11 +109,11 @@ public class HttpServer implements Runnable {
             Matcher matcher = pattern.matcher(request);
 
             if (request.equals("GET / HTTP/1.1")) {
-                String responseDoc = new String(Files.readAllBytes(Paths.get("E:\\Programming\\MySearchEngine\\src\\search_engine.html")));
+                String responseDoc = new String(Files.readAllBytes(Paths.get("E:\\Github Repositories\\MySearchEngine\\src\\search_engine.html")));
                 response200(responseDoc);
             }
             else if (request.equals("GET /style.css HTTP/1.1")) {
-                String responseDoc = new String(Files.readAllBytes(Paths.get("E:\\Programming\\MySearchEngine\\src\\style.css")));
+                String responseDoc = new String(Files.readAllBytes(Paths.get("E:\\Github Repositories\\MySearchEngine\\src\\style.css")));
                 response200(responseDoc);
             } else
                 response200();

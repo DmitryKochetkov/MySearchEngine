@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Search</title>
+    <title>Search Engine</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script>
         function search() {
@@ -11,20 +11,18 @@
                 "История гибели Джона Леннона", 
                 "Джон Леннон: глубокий смысл песни Imagine", 
                 "Йоко Оно и Джон Леннон",
-                "Марк Чепмен - убийца Джона Леннона"
+                "Марк Чепмен - убийца Джона Леннона",
+                "Джон Леннон и Пол Маккартни"
             ];
 
-            var input = document.getElementById('request').value;
+            var input = document.getElementById('request').value + '';
             var div = document.getElementById('response');
             div.innerHTML = '';
 
-            var p = document.createElement('p');
-            var msg = document.createTextNode('Общее число результатов: ');
-            p.appendChild(msg);
-            div.appendChild(p);
+            var count = 0;
 
             for (var i in pages) {
-                if (i.search(input))
+                if (pages[i].indexOf(input) != -1)
                 {
                     var li = document.createElement('li');
                     var a = document.createElement('a');
@@ -32,8 +30,14 @@
                     a.href = '#';
                     li.appendChild(a);
                     div.appendChild(li);
+                    count++;
                 }
             }
+
+            var p = document.createElement('p');
+            var msg = document.createTextNode('Общее число результатов: ' + count + '.');
+            p.appendChild(msg);
+            div.appendChild(p);
         }
     </script>
 </head>
