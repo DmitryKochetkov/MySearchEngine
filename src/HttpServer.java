@@ -48,8 +48,23 @@ public class HttpServer implements Runnable {
                         "\r\n\r\n";
         writer.write(responseHeader.getBytes());
         writer.write(bytes);
+
         System.out.println("Response header:\n" + responseHeader + "\n");
         System.out.println("Response body is HTML document.");
+    }
+
+    //TODO: fix the image response (probably with FileOutputStream)
+    private void response200_imagePNG(String image) throws IOException {
+        byte[] bytes = image.getBytes();
+        String responseHeader =
+                "HTTP/1.1 200 OK\r\n\t" +
+                        "Content-Type: image/png;\r\n\t" +
+                        "Content-Length: " + bytes.length +
+                        "\r\n\r\n";
+        writer.write(responseHeader.getBytes());
+        writer.write(bytes);
+        System.out.println("Response header:\n" + responseHeader + "\n");
+        System.out.println("Response body is a PNG image.");
     }
 
     private void response500() throws IOException {
@@ -64,6 +79,8 @@ public class HttpServer implements Runnable {
         writer.write(bytes);
         System.out.println("Response header:\n" + responseHeader + "\n");
     }
+
+
 
     @Override
     public void run() {
@@ -102,27 +119,31 @@ public class HttpServer implements Runnable {
 
         if (request == null) {
             response400();
-            //return true;
+            return true;
         }
         else {
             Pattern pattern = Pattern.compile("(.*) \\/(.*) HTTP\\/1\\.1");
             Matcher matcher = pattern.matcher(request);
 
+            //TODO: reconfigure Paths.get("./src/*")
             if (request.equals("GET / HTTP/1.1")) {
-                String responseDoc = new String(Files.readAllBytes(Paths.get("E:\\Github Repositories\\MySearchEngine\\src\\search_engine.html")));
+                String responseDoc = new String(Files.readAllBytes(Paths.get("./src/search_engine.html")));
                 response200(responseDoc);
             }
             else if (request.equals("GET /style.css HTTP/1.1")) {
-                String responseDoc = new String(Files.readAllBytes(Paths.get("E:\\Github Repositories\\MySearchEngine\\src\\style.css")));
+                String responseDoc = new String(Files.readAllBytes(Paths.get("./src/style.css")));
                 response200(responseDoc);
-            } else
-                response200();
+            } else if (request.equals("GET /img/Lennon.png HTTP/1.1")) {
+                String responseDoc = new String(Files.readAllBytes(Paths.get("./src/img/Lennon.png")));
+                response200_imagePNG(responseDoc);
+            }
+            else response200();
 
             socket.close();
             System.out.println("Connection closed.\n");
             return true;
         }
-        return true;
+        
     }
 }
 
