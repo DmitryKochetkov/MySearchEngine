@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MySearchEngine.iml" filepath="$PROJECT_DIR$/MySearchEngine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MySearchEngine_legacy.iml" filepath="$PROJECT_DIR$/MySearchEngine_legacy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ege-search-engine/ege-search-engine.iml" filepath="$PROJECT_DIR$/ege-search-engine/ege-search-engine.iml" />
     </modules>
   </component>
 </project>
